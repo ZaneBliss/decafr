@@ -5,6 +5,7 @@
 <h1>Login</h1>
 <form method='post'>
     {% csrf_token %}
+    <p>Need an account? <a href="http://localhost:8000/accounts/register">Sign Up</a></p>
     {{ form.as_p }}
     <button type='submit'>Login</button>
 </form>
