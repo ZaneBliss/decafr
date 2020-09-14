@@ -9,7 +9,17 @@
     <title>Decafr</title>
   </head>
   <body>
+    <h3>Decafr</h3>
     {% block content %}
     {% endblock %}
+    {% if request.user.is_authenticated %}
+    <div>
+      <ul>
+        <li>Home</li>
+        <li>Create Drink</li>
+        <li><a href="{% url 'decafrapp:logout' %}"> Logout</a></li>
+      </ul>
+    </div>
+    {% endif %}
   </body>
 </html>

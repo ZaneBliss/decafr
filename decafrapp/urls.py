@@ -1,10 +1,11 @@
 from django.urls import path, include
-from .views import home, register
+from . import views
 
 app_name = 'decafrapp'
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/register/', register, name='register'),
+    path('', views.home, name='home'),
+    path('', include('django.contrib.auth.urls')),
+    path('register/', views.register, name='register'),
+    path('logout', views.logout_view, name='logout')
 ]

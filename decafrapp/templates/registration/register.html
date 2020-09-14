@@ -3,9 +3,8 @@
 {% block content %}
 <h1>Register</h1>
 <form method="POST" id="form">
-
     {% csrf_token %}
-    <p>Need to login? <a href="http://localhost:8000/accounts/login">Login</a></p>
+    <p>Need to login? <a href="{% url 'decafrapp:login' %}">Login</a></p>
     {% if messages %}
     {% for message in messages %}
         <p>{{ message }}</p>
