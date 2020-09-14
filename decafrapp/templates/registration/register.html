@@ -2,9 +2,15 @@
 {% load static %} 
 {% block content %}
 <h1>Register</h1>
-<form method="POST">
+<form method="POST" id="form">
+
     {% csrf_token %}
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% endif%}
     {{ form.as_p }}
-    <button type="submit">Register</button>
+    <button id="register_btn" type="submit">Register</button>
 </form>
 {% endblock %}
