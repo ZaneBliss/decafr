@@ -5,8 +5,8 @@ from .entry import Entry
 
 class DrinkEntry(models.Model):
 
-    drink_id = models.ForeignKey(Drink, on_delete=models.DO_NOTHING)
-    entry_id = models.ForeignKey(Entry, on_delete=models.DO_NOTHING)
+    drink = models.ForeignKey(Drink, on_delete=models.DO_NOTHING)
+    entry = models.ForeignKey(Entry, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = ("DrinkEntry")

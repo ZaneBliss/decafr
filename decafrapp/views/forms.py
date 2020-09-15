@@ -11,6 +11,14 @@ class RegistrationForm(UserCreationForm):
 
 class EntryForm(forms.ModelForm):
     class Meta: 
+        model = Entry
+        IMPACT_CHOICES = [
+            ("1", "None"),
+            ("2", "Mild"),
+            ("3", "Normal"),
+            ("4", "High"),
+            ("5", "Severe"),
+        ]
         CHOICES = [
             ("verysad", "😢"),
             ("sad", "😕"),
@@ -18,12 +26,32 @@ class EntryForm(forms.ModelForm):
             ("happy", "🙂"), 
             ("veryhappy", "😁")
         ]
-        model = Entry
-        fields=["mood", "notes"] 
+        fields=["mood", "impact", "notes"] 
+        labels = {
+            "impact": "Caffeine Impact"
+        }
         widgets = {
             "mood": forms.RadioSelect(choices=CHOICES),
-            "notes": forms.Textarea()
+            "notes": forms.Textarea(),
+            "impact": forms.RadioSelect(choices=IMPACT_CHOICES)
         }
 
 class DrinkEntryForm(forms.Form):
     drink = forms.ModelChoiceField(queryset=Drink.objects.all(), label="Drink")
+
+class DrinkForm(forms.ModelForm):
+    class Meta:
+        model = Drink
+        TYPE_CHOICES = [
+            ("tea", "Tea"),
+            ("coffee", "Coffee"),
+            ("softdrink", "Soft Drink"),
+            ("enerygydrink", "Energy Drink"),
+            ("shake", "Shake"),
+            ("snack", "Snack Food"),
+            ("medication", "OTC Medication")
+        ]
+        fields=["name", "caffeine_mg", "type"]
+        widgets = {
+            "type": forms.Select(choices=TYPE_CHOICES)
+        }

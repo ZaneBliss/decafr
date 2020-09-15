@@ -6,6 +6,7 @@ class Entry(models.Model):
     mood = models.CharField(max_length=50)
     notes = models.CharField(max_length=50)
     date = models.DateTimeField(auto_now_add=True)
+    impact = models.IntegerField()
 
     class Meta:
         verbose_name = ("Entry")
