@@ -13,5 +13,5 @@ def register(request):
             form.save()
             return redirect("/")
         else:
-            messages.error(request, "• Submission rejected. Please ensure you meet form requirements.")
+            messages.error(request, "Submission rejected. Please ensure you meet form requirements.")
             return redirect(request.path_info)
