@@ -1,5 +1,6 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+<h4>New Drink</h4>
 <form method="post">
     <a href="{% url "decafrapp:newentry" %}">Go back</a>
     {% csrf_token %}

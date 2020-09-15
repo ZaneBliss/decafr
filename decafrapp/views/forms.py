@@ -37,7 +37,7 @@ class EntryForm(forms.ModelForm):
         }
 
 class DrinkEntryForm(forms.Form):
-    source = forms.ModelChoiceField(queryset=Drink.objects.all())
+    drink = forms.ModelChoiceField(queryset=Drink.objects.all())
 
 class DrinkForm(forms.ModelForm):
     class Meta:
@@ -48,8 +48,7 @@ class DrinkForm(forms.ModelForm):
             ("softdrink", "Soft Drink"),
             ("enerygydrink", "Energy Drink"),
             ("shake", "Shake"),
-            ("snack", "Snack Food"),
-            ("medication", "OTC Medication")
+            ("other", "Other"),
         ]
         fields=["name", "caffeine_mg", "type"]
         widgets = {
