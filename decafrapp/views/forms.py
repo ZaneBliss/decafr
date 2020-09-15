@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from decafrapp.models import Entry
+from decafrapp.models import Entry, Drink
 
 class RegistrationForm(UserCreationForm):
     
@@ -24,3 +24,6 @@ class EntryForm(forms.ModelForm):
             "mood": forms.RadioSelect(choices=CHOICES),
             "notes": forms.Textarea()
         }
+
+class DrinkEntryForm(forms.Form):
+    drink = forms.ModelChoiceField(queryset=Drink.objects.all(), label="Drink")
