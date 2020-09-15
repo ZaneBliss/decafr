@@ -12,8 +12,5 @@ class DrinkEntry(models.Model):
         verbose_name = ("DrinkEntry")
         verbose_name_plural = ("DrinkEntrys")
 
-    def __str__(self):
-        return self.name
-
     def get_absolute_url(self):
         return reverse("DrinkEntry_detail", kwargs={"pk": self.pk})

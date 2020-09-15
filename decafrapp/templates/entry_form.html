@@ -1,0 +1,10 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ drink_entry_form.as_p }}
+    <button>Add New Drink</button>
+    {{ entry_form.as_p }}
+    <button type="submit">Save entry</button>
+</form>
+{% endblock %}
