@@ -11,8 +11,5 @@ class Entry(models.Model):
         verbose_name = ("Entry")
         verbose_name_plural = ("Entrys")
 
-    def __str__(self):  
-        return self.name
-
     def get_absolute_url(self):
         return reverse("Entry_detail", kwargs={"pk": self.pk})
