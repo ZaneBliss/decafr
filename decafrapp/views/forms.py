@@ -37,7 +37,7 @@ class EntryForm(forms.ModelForm):
         }
 
 class DrinkEntryForm(forms.Form):
-    drink = forms.ModelChoiceField(queryset=Drink.objects.all(), label="Drink")
+    source = forms.ModelChoiceField(queryset=Drink.objects.all())
 
 class DrinkForm(forms.ModelForm):
     class Meta:
