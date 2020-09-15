@@ -5,7 +5,6 @@ class Drink(models.Model):
 
     name = models.CharField(max_length=50)
     caffeine_mg = models.DecimalField(decimal_places=1, max_digits=5)
-    impact = models.IntegerField()
     type = models.CharField(max_length=50)
 
     class Meta:
