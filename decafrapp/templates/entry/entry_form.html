@@ -1,9 +1,15 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+<h4>New Entry</h4>
 <form method="POST">
     {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
     {{ drink_entry_form.as_p }}
-    <button><a href="{% url "decafrapp:newdrink" %}"> Add New Drink</a></button>
+    <button><a href="{% url "decafrapp:newdrink" %}">Add New</a></button>
     {{ entry_form.as_p }}
     <button type="submit">Save entry</button>
 </form>

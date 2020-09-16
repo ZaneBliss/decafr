@@ -1,9 +1,10 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+<h4>New Drink</h4>
 <form method="post">
-    <p>Changed your mind? <a href="{% url "decafrapp:newentry" %}">Go back.</a></p>
+    <a href="{% url "decafrapp:newentry" %}">Go back</a>
     {% csrf_token %}
     {{ drink_form.as_p }}
-    <button type="submit">Save Drink</button>
+    <button type="submit">Save</button>
 </form>
 {% endblock %}
