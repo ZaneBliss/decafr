@@ -5,7 +5,6 @@ def entry_list(request):
     entries = Entry.objects.all()
     drinks = Drink.objects.all()
     drink_entries = DrinkEntry.objects.all() 
-    entry_coll = list()
     for drink_entry in drink_entries:
         for entry in entries:
             if entry.id == drink_entry.entry_id:
