@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<div>
+    <h3>Entries</h3>
+    {% for entry in entries %}
+    <div>
+        <h4>{{ entry.date }}</h4>
+        <p>Mood: {{ entry.mood }}</p>
+        <p>Impact: {{ entry.impact|title }}</p>
+        <p>Drink: {{ entry.drink }}</p>
+        <p>Notes: {{ entry.notes }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

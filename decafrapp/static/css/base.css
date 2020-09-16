@@ -1,0 +1,13 @@
+body {
+    font-family: 'Song Myung', serif;
+    background-color: #DBE3E5;
+}
+
+.header__logo {
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.newentry_button {
+    float: right;
+}

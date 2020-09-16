@@ -13,18 +13,18 @@ class EntryForm(forms.ModelForm):
     class Meta: 
         model = Entry
         IMPACT_CHOICES = [
-            ("1", "None"),
-            ("2", "Mild"),
-            ("3", "Normal"),
-            ("4", "High"),
-            ("5", "Severe"),
+            ("none", "None"),
+            ("mild", "Mild"),
+            ("normal", "Normal"),
+            ("high", "High"),
+            ("severe", "Severe"),
         ]
         CHOICES = [
-            ("verysad", "😢"),
-            ("sad", "😕"),
-            ("neutral", "😐"),
-            ("happy", "🙂"), 
-            ("veryhappy", "😁")
+            ("😢", "😢"),
+            ("😕", "😕"),
+            ("😐", "😐"),
+            ("🙂", "🙂"), 
+            ("😁", "😁")
         ]
         fields=["mood", "impact", "notes"] 
         labels = {

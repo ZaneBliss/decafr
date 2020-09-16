@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="{% static "css/normalize.css" %}">
     <link rel="stylesheet" href="{% static "css/base.css" %}">
     <title>Decafr</title>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
   </head>
   <body>
-    <h3>Decafr</h3>
+    <div class="header">
+      <h3 class="header__logo">Decafr</h3>
+      {% if request.path == '/' %}
+        <button class="newentry_button" onclick="document.location='{% url "decafrapp:newentry" %}'">New Entry</button>
+      {% endif %}
+    </div>
     {% block content %}
     {% endblock %}
     {% if request.user.is_authenticated %}
     <div>
       <ul>
         <li><a href="{% url 'decafrapp:home' %}">Home</a></li>
+        <li><a href="{% url 'decafrapp:entries' %}">Entries</a></li>
         <li><a href="{% url 'decafrapp:logout' %}">Logout</a></li>
       </ul>
     </div>
