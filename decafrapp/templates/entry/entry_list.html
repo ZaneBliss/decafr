@@ -2,14 +2,19 @@
 {% block content %}
 <div>
     <h3>Entries</h3>
-    {% for entry in entries %}
     <div>
-        <h4>{{ entry.date }}</h4>
-        <p>Mood: {{ entry.mood }}</p>
-        <p>Impact: {{ entry.impact|title }}</p>
-        <p>Drink: {{ entry.drink }}</p>
-        <p>Notes: {{ entry.notes }}</p>
+        {% for drink_entry in drink_entries %}
+        <h4>{{ drink_entry.entry.date }}</h4>
+        <p>Mood: {{ drink_entry.entry.mood }}</p>
+        <p>Impact: {{ drink_entry.entry.impact|title }}</p>
+        <p>Drink: {{ drink_entry.drink }}</p>
+        <p>Notes: {{ drink_entry.entry.notes }}</p>
+        <form action='{% url 'decafrapp:entry' drink_entry.entry.id %}' method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="delete" value="DELETE">
+            <button>Delete</button>
+        </form>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}

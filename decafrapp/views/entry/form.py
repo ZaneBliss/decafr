@@ -17,7 +17,6 @@ def entry_form(request):
 
     if request.method == 'POST':
         form = EntryForm(request.POST or None)
-        print(form.is_valid())
         if form.is_valid():
             form.save()
             selected_drink = Drink.objects.get(pk=form.data["drink"])
