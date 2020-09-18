@@ -7,4 +7,5 @@ def entry_detail(request, pk):
         entry = Entry.objects.get(pk=pk)
         drink_entry = DrinkEntry.objects.get(entry_id=entry.id)
         drink_entry.delete()
+        entry.delete()
     return redirect('/entries')

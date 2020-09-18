@@ -7,10 +7,14 @@
         <h4>{{ drink.name }}</h4>
         <p>Caffeine mg: {{ drink.caffeine_mg }}</p>
         <p>Drink type: {{ drink.type|title }}</p>
-        <form action='{% url 'decafrapp:drink' drink.id %}' method="POST">
+        <form action='{% url 'decafrapp:drink' drink.id %}' method='POST'>
             {% csrf_token %}
-            <input type="hidden" name="delete" value="DELETE">
+            <input type='hidden' name='delete' value='DELETE'>
             <button>Delete</button>
+        </form>
+        <form action='{% url 'decafrapp:drinkedit' drink.id %}' method="GET">
+        {% csrf_token %}
+        <button>Edit</button>
         </form>
     </div>
     {% endfor %}

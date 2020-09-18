@@ -1,8 +1,14 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+{% if drink.id is not None %}
+<h4>Edit Drink</h4>
+<form action='{% url 'decafrapp:drinkedit' drink.id %}' method='post'>
+{% else %}
 <h4>New Drink</h4>
-<form method="post">
-    <a href="{% url "decafrapp:newentry" %}">Go back</a>
+<form method='post'>
+<a href='{% url 'decafrapp:newentry' %}'>Go back</a>
+{% endif %}
+<form method='post'>
     {% csrf_token %}
     {{ drink_form.as_p }}
     <button type="submit">Save</button>

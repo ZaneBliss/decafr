@@ -4,16 +4,9 @@ from decafrapp.models import Entry, Drink, DrinkEntry
 from ..forms import EntryForm, DrinkEntryForm
 
 def entry_form(request):
-    if request.method == 'GET':
-        drink_entry_form = DrinkEntryForm()
-        entry_form = EntryForm()
-        drinks = Drink.objects.all()
-        context = { 
-            "drinks": drinks,
-            "entry_form": entry_form,
-            "drink_entry_form": drink_entry_form
-        }
-        return render(request, 'entry/entry_form.html', context)
+    drink_entry_form = DrinkEntryForm()
+    entry_form = EntryForm()
+    drinks = Drink.objects.all()
 
     if request.method == 'POST':
         form = EntryForm(request.POST or None)
@@ -25,8 +18,34 @@ def entry_form(request):
                 drink_id=selected_drink.id, 
                 entry_id=latest_entry.id
             )
+            return redirect('decafrapp:entries')
         else:
             messages.error(request, form.errors)
             return redirect(request.path_info)
 
-        return redirect("decafrapp:newentry")
+    template = 'entry/entry_form.html'
+    context = { 
+        "drinks": drinks,
+        "entry_form": entry_form,
+        "drink_entry_form": drink_entry_form
+    }
+    return render(request, template, context)
+
+def entry_edit_form(request, pk):
+    drink_entry = DrinkEntry.objects.get(entry_id=pk)
+    entry  = drink_entry.entry
+    drink = drink_entry.drink
+    entry_form = EntryForm(instance=entry)
+    
+    if request.method == 'POST':
+        entry_form = EntryForm(request.POST or None, instance=entry)
+        entry_form.save()
+        return redirect('decafrapp:entries')
+        
+    template = 'entry/entry_form.html'
+    context = {
+        'drink': drink,
+        'entry': entry,
+        'entry_form': entry_form
+    }
+    return render(request, template, context)
