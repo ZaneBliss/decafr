@@ -1,16 +1,25 @@
 {% extends 'shared/base.html' %}
 {% block content %}
+{% if entry.id is not None %}
+<h4>Edit Entry</h4>
+<form action='{% url 'decafrapp:entryedit' entry.id %}' method='post'>
+{% else %}
 <h4>New Entry</h4>
-<form method="POST">
+<form method='post'>
+{% endif %}
     {% csrf_token %}
     {% if messages %}
         {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
     {% endif %}
+    {% if entry.id is None %}
     {{ drink_entry_form.as_p }}
-    <button><a href="{% url "decafrapp:newdrink" %}">Add New</a></button>
+    <button><a href='{% url 'decafrapp:newdrink' %}'>Add New</a></button>
+    {% else %}
+    <p>Drink: {{ drink }}</p>
+    {% endif %}
     {{ entry_form.as_p }}
-    <button type="submit">Save entry</button>
+    <input type='submit' value='Save'>
 </form>
 {% endblock %}
