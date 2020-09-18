@@ -15,4 +15,5 @@ urlpatterns = [
     path('newdrink', views.drink_form, name='newdrink'),
     path('drinks', views.drink_list, name='drinks'),
     path('drinks/<int:pk>', views.drink_detail, name='drink'),
+    path('drinks/<int:pk>/form', views.drink_edit_form, name='drinkedit'),
 ]

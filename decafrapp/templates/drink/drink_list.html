@@ -12,10 +12,10 @@
             <input type='hidden' name='delete' value='DELETE'>
             <button>Delete</button>
         </form>
-        {% comment %} <form action="{% url 'decafrapp:drink_edit_form' drink.id %}" method="GET">
+        <form action='{% url 'decafrapp:drinkedit' drink.id %}' method="GET">
         {% csrf_token %}
         <button>Edit</button>
-        </form> {% endcomment %}
+        </form>
     </div>
     {% endfor %}
 </div>
