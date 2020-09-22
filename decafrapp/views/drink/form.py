@@ -6,17 +6,16 @@ def drink_form(request):
     if request.method == 'POST':
         form = DrinkForm(request.POST or None)
         if form.is_valid():
-            form.save()
-        
-        return redirect("decafrapp:newentry")
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+        return redirect('decafrapp:newentry')
     drink_form = DrinkForm()
     template = 'drink/drink_form.html'
     context = {
         "drink_form": drink_form
     }
     return render(request, template, context)
-
-
 
 def drink_edit_form(request, pk):
     drink = Drink.objects.get(pk=pk)

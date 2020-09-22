@@ -4,7 +4,7 @@ from decafrapp.models import Entry, Drink, DrinkEntry
 from ..forms import EntryForm, DrinkEntryForm
 
 def entry_form(request):
-    drink_entry_form = DrinkEntryForm()
+    drink_entry_form = DrinkEntryForm(user=request.user)
     entry_form = EntryForm()
     drinks = Drink.objects.all()
 
@@ -12,9 +12,10 @@ def entry_form(request):
         form = EntryForm(request.POST or None)
         if form.is_valid():
             form.save()
-            selected_drink = Drink.objects.get(pk=form.data["drink"])
-            latest_entry = Entry.objects.latest("date")
+            selected_drink = Drink.objects.get(pk=form.data['drink'])
+            latest_entry = Entry.objects.latest('id')
             DrinkEntry.objects.create(
+                user=request.user,
                 drink_id=selected_drink.id, 
                 entry_id=latest_entry.id
             )

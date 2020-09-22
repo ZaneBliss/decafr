@@ -1,8 +1,10 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Drink(models.Model):
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     caffeine_mg = models.DecimalField(decimal_places=1, max_digits=5)
     type = models.CharField(max_length=50)

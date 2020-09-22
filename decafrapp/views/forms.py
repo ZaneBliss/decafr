@@ -37,7 +37,10 @@ class EntryForm(forms.ModelForm):
         }
 
 class DrinkEntryForm(forms.Form):
-    drink = forms.ModelChoiceField(queryset=Drink.objects.all())
+
+    def __init__(self, user, *args, **kwargs):
+        super(DrinkEntryForm, self).__init__(*args, **kwargs)
+        self.fields['drink'] = forms.ModelChoiceField(queryset=Drink.objects.all().filter(user=user))
 
 class DrinkForm(forms.ModelForm):
     class Meta:

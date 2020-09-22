@@ -1,7 +1,17 @@
 {% extends 'shared/base.html' %}
 {% block content %}
 <h3>Welcome, {{ request.user }}.</h3>
-<h3>Decaf Habits</h3>
-<h4>Daily Caffeine Dosage</h4>
-<h4>Drink Breakdown</h4>
+<h4>Latest Entries</h4>
+{% for drink_entry in drink_entries %}
+<div>
+    <h5>{{ drink_entry.drink.type|title }}</h5>
+    <p>{{ drink_entry.drink.name }}</p>
+    <p>{{ drink_entry.drink.caffeine_mg }}</p>
+    <p>{{ drink_entry.entry.mood }}</p>
+</div>
+{% endfor %}
+<h4>Caffeine Intake</h4>
+<canvas id='caffeineIntake' width='400' height='400' hidden='true'></canvas>
+{% comment %} <h4>Drink Breakdown</h4>
+<canvas id='drinkBreakdown' width='400' height='400'></canvas> {% endcomment %}
 {% endblock %}
