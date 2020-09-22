@@ -5,9 +5,9 @@ from decafrapp.models import DrinkEntry
 def home(request):
     if request.user.is_authenticated:
         if request.method == 'GET':
-            drink_entries = DrinkEntry.objects.all().order_by('-id')[:3]
+            drink_entries = DrinkEntry.objects.all().filter(user=request.user).order_by('-id')[:3]
             template = 'home.html'
-            context = {'drink_entries': drink_entries}
+            context = {'drink_entries': drink_entries }
             return render(request, template, context) 
     else:
         return redirect('decafrapp:login')
