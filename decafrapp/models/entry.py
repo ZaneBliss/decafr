@@ -5,7 +5,6 @@ class Entry(models.Model):
 
     mood = models.CharField(max_length=50)
     notes = models.CharField(max_length=250)
-    date = models.DateTimeField(auto_now_add=True)
     impact = models.CharField(max_length=50)
 
     class Meta:
