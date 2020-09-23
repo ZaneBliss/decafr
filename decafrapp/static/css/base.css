@@ -11,3 +11,8 @@ body {
 .newentry_button {
     float: right;
 }
+
+.chart {
+    width: 500px;
+    height: 500px;
+}

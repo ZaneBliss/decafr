@@ -6,12 +6,14 @@
 <div>
     <h5>{{ drink_entry.drink.type|title }}</h5>
     <p>{{ drink_entry.drink.name }}</p>
-    <p>{{ drink_entry.drink.caffeine_mg }}</p>
+    <p>{{ drink_entry.drink.caffeine_mg }} mg</p>
     <p>{{ drink_entry.entry.mood }}</p>
 </div>
 {% endfor %}
-<h4>Caffeine Intake</h4>
-<canvas id='caffeineIntake' width='400' height='400' hidden='true'></canvas>
-{% comment %} <h4>Drink Breakdown</h4>
-<canvas id='drinkBreakdown' width='400' height='400'></canvas> {% endcomment %}
+<h4>Caffeine intake</h4>
+<canvas id='caffeineIntake' hidden='true'></canvas>
+<h4>Drinks per day</h4>
+<canvas id='drinksPerDay' hidden='true'></canvas>
+<h4>Drink Breakdown</h4>
+<canvas id='drinkBreakdown' hidden='true'></canvas>
 {% endblock %}
